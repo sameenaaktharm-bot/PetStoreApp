@@ -1,0 +1,108 @@
+<div class="admin-container">
+  <div class="category-header">
+    <div class="header-left">
+      <h2>Order Management</h2>
+      <div class="filter-controls">
+        <div class="search-group">
+          <input type="text" [(ngModel)]="searchUserId" placeholder="User ID" class="cat-select" />
+          <button class="add-btn" (click)="fetchOrders()">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+        <select [(ngModel)]="filterStatus" (change)="applyFilters()" class="cat-select">
+          <option value="">All Status</option>
+          <option value="PENDING">Pending</option>
+          <option value="PROCESSING">Processing</option>
+          <option value="SHIPPED">Shipped</option>
+          <option value="DELIVERED">Delivered</option>
+          <option value="CANCELLED">Cancelled</option>
+        </select>
+
+        <input
+          type="date"
+          [(ngModel)]="filterDate"
+          (change)="applyFilters()"
+          class="cat-select date-input"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <table class="styled-table" *ngIf="filteredOrders.length > 0; else noOrders">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of filteredOrders">
+          <td>
+            <span class="id-badge">#{{ order.orderId }}</span>
+          </td>
+          <td>
+            <strong>{{ order.fullName }}</strong>
+          </td>
+          <td>{{ order.orderDate | date: 'yyyy-MM-dd' }}</td>
+          <td>
+            <span [class]="'status-pill ' + order.status?.toLowerCase()">
+              {{ order.status || 'Pending' }}
+            </span>
+          </td>
+          <td class="price-text">{{ order.totalAmount | currency }}</td>
+          <td>
+            <button class="edit-icon" (click)="viewOrder(order)">
+              <i class="fa fa-eye"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noOrders>
+      <div class="empty-state">
+        <i class="fa fa-receipt"></i>
+        <p>No orders found. Adjust your filters.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="modal-overlay" *ngIf="selectedOrder">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Update Order #{{ selectedOrder.orderId }}</h3>
+      </div>
+
+      <div class="form-inputs">
+        <div class="input-group">
+          <label>Change Status</label>
+          <select [(ngModel)]="selectedOrder.status" class="modal-select">
+            <option value="PENDING">Pending</option>
+            <option value="PROCESSING">Processing</option>
+            <option value="SHIPPED">Shipped</option>
+            <option value="DELIVERED">Delivered</option>
+            <option value="CANCELLED">Cancelled</option>
+          </select>
+        </div>
+
+        <div class="info-box">
+          <strong>Shipping To:</strong>
+          <p>{{ selectedOrder.fullName }}</p>
+          <p>{{ selectedOrder.address }}, {{ selectedOrder.city }}</p>
+          <p>{{ selectedOrder.state }} - {{ selectedOrder.pincode }}</p>
+        </div>
+      </div>
+
+      <div class="modal-btns">
+        <button class="cancel-btn" (click)="selectedOrder = null">Cancel</button>
+        <button class="save-btn" (click)="updateStatus()">Update Status</button>
+      </div>
+    </div>
+  </div>
+</div>

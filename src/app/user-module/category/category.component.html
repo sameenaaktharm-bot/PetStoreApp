@@ -1,0 +1,34 @@
+<div class="category-detail-container">
+  @if (products().length > 0){
+    <header class="category-header">
+      <div class="header-left">
+        <button class="btn-back" [routerLink]="['/']">← Back to Categories</button>
+      </div>
+      
+      <div class="header-center">
+        <h1>{{ products()[0].category.name || 'Products' }}</h1>
+        <span class="results-badge">{{ products().length }} Products</span>
+      </div>
+
+      <div class="header-right"></div>
+    </header>
+
+    <section class="products-section">
+      <div class="product-grid">
+        @for (product of products(); track product.productId) {
+          <div class="product-card" [routerLink]="['/category', categoryId, product.productId]">
+            <div class="product-image-wrapper">
+              <img 
+                [src]="product.imageUrl ? imageBaseUrl + product.imageUrl : 'https://via.placeholder.com/250'" 
+                [alt]="product.name">
+            </div>
+            
+            <div class="product-info">
+              <h4 class="product-name hover-underline-center">{{ product.name }}</h4>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  }
+</div>

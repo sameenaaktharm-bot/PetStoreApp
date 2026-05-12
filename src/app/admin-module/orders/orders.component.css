@@ -1,0 +1,208 @@
+:host {
+  --primary: #4b2406;
+  --dark: #a65d2a;
+  --secondary: #fcf3e2;
+  --light: #f8fafceb;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-container {
+  padding: 60px 5%;
+  min-height: 100vh;
+  width: 100%;
+  background: url('../../user-module/data/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-sizing: border-box;
+}
+
+/* Header */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.category-header h2 {
+  font-size: 2rem;
+  font-weight: 790;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-group {
+  display: flex;
+  gap: 5px;
+}
+
+.cat-select {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--dark);
+  background: var(--secondary);
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.date-input {
+  min-width: 160px;
+}
+
+.add-btn {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  color: var(--light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* Table Card */
+.table-card {
+  background: var(--primary);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table {
+  width: 100%;
+  border-radius: 12px;
+  background: var(--secondary);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.styled-table th, .styled-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--dark);
+  color: var(--primary);
+}
+
+.styled-table thead {
+  background: var(--secondary);
+  font-weight: 800;
+}
+
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.status-pill.delivered { background: #d4edda; color: #155724; }
+.status-pill.pending { background: #fff3cd; color: #856404; }
+.status-pill.cancelled { background: #f8d7da; color: #721c24; }
+.status-pill.shipped { background: #e0cffc; color: #6610f2; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: var(--secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header h3 {
+  margin: 0 0 1.5rem 0;
+  color: var(--primary);
+  border-bottom: 1px solid var(--dark);
+  padding-bottom: 1rem;
+}
+
+.info-box {
+  background: rgba(166, 93, 42, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border: 1px dashed var(--dark);
+  color: var(--primary);
+}
+
+.input-group{
+  cursor: pointer;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.modal-select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--dark);
+  border-radius: 8px;
+  background: white;
+  margin-bottom: 5px;
+}
+
+.modal-content label{
+  margin-bottom: 10px;
+}
+
+.modal-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid var(--dark);
+  color: var(--dark);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: var(--primary);
+  color: var(--light);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-icon {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+}

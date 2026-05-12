@@ -1,0 +1,33 @@
+<nav class="nav-bar">
+  <div class="nav-content">
+    <div class="logo-container" [routerLink]="['/']">
+      <i class="fa-solid fa-paw animal-icon"></i>
+      <h1 class="brand-name">JPetstore</h1>
+    </div>
+
+    <ul class="nav-items">
+      <li><a routerLink="/admin/categories" routerLinkActive="active-link">Categories</a></li>
+      <li><a routerLink="/admin/products" routerLinkActive="active-link">Products</a></li>
+      <li><a routerLink="/admin/variants" routerLinkActive="active-link">Variants</a></li>
+      <li><a routerLink="/admin/orders" routerLinkActive="active-link">Orders</a></li>
+    </ul>
+
+    <div class="right-navbar">
+      <div class="profile-container">
+        <div class="profile-icon">
+          <i class="fa fa-user-circle"></i>
+        </div>
+        <div class="profile-dropdown">
+          <div class="dropdown-user-info">
+            <p class="admin-name">Admin User</p>
+            <p class="admin-role">Store Manager</p>
+          </div>
+          <hr />
+          <button class="logout-btn" (click)="onLogout()">
+            <i class="fa fa-sign-out"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

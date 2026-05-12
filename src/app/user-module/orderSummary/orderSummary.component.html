@@ -1,0 +1,101 @@
+<div class="summary-viewport">
+  @if (isLoading()) {
+    <div class="loading-overlay">Generating Invoice...</div>
+  } @else if (currentOrder(); as order) {
+    <div class="invoice-container print">
+      
+      <div class="invoice-branding print">
+        <div class="logo">
+          <i class="fa-solid fa-paw"></i>
+          <span>JPetstore</span>
+        </div>
+        <div class="receipt-label">Official Receipt</div>
+      </div>
+
+      <hr class="thick-divider">
+
+      <div class="essentials-grid">
+        <div class="essentials-block">
+          <span class="meta-label">Billed To</span>
+          <span class="meta-value">{{ order.fullName }}</span>
+          <span class="meta-sub">{{ order.address }}, {{ order.city }}</span>
+          <span class="meta-sub">{{ order.mobileNumber }}</span>
+        </div>
+        <div class="essentials-block">
+          <span class="meta-label">Date Issued</span>
+          <!-- Use createdAt from your JSON -->
+          <span class="meta-value">{{ order.createdAt | date:'MMMM dd, yyyy' }}</span>
+        </div>
+        <div class="essentials-block text-right">
+          <span class="meta-label">Order Reference</span>
+          <span class="meta-value">#JP-{{ order.orderId }}</span>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="modern-table">
+          <thead>
+            <tr>
+              <th>Item Description</th>
+              <th class="text-right">Product ID</th>
+              <th class="text-right">Price</th>
+              <th class="text-right">Qty</th>
+              <th class="text-right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of order.enrichedItems; track item.orderItemId) {
+              <tr>
+                <td>
+                  <div class="item-cell">
+                    <img [src]="imageBaseUrl + item.imageUrl" alt="">
+                    <span class="item-name">{{ item.name }}</span>
+                  </div>
+                </td>
+                <td class="text-right mono">{{ item.variantId }}</td>
+                <td class="text-right">{{ item.price | currency }}</td>
+                <td class="text-right">{{ item.quantity }}</td>
+                <td class="text-right weight-700">
+                  {{ (item.price * item.quantity) | currency }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="financial-section">
+        <div class="shipping-info">
+          <span class="meta-label">Payment Method</span>
+          <span class="meta-value">
+            <i class="fa-solid fa-credit-card"></i> 
+            {{ order.cardType }} (**** {{ order.cardNumber.slice(-4) }})
+          </span>
+        </div>
+        <div class="totals-bill">
+          <div class="bill-row">
+            <span>Subtotal</span>
+            <span>{{ order.totalAmount | currency }}</span>
+          </div>
+          <div class="bill-row">
+            <span>Tax</span>
+            <span>$0.00</span>
+          </div>
+          <div class="bill-row grand-total">
+            <span>Total Amount Paid</span>
+            <span>{{ order.totalAmount | currency }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="invoice-actions no-print">
+        <button class="btn-dark" [routerLink]="['/']">Continue Shopping</button>
+        <button class="btn-light" (click)="printPage()">
+          <i class="fa-solid fa-print"></i> Print Receipt
+        </button>
+      </div>
+    </div>
+  } @else {
+    <div class="error-state">Order not found.</div>
+  }
+</div>

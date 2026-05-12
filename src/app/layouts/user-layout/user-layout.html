@@ -1,0 +1,89 @@
+<header class="main-header no-print">
+  <nav class="navbar">
+    <div class="logo-container" [routerLink]="['/']">
+      <i class="fa-solid fa-paw animal-icon"></i>
+      <h1 class="brand-name">JPetstore</h1>
+    </div>
+
+    <ul class="nav-links">
+      @for (cat of categories(); track cat.id) {
+        <li>
+          <a
+            class="hover-underline-center"
+            [routerLink]="['/category', cat.categoryId]"
+            routerLinkActive="active-link"
+          >
+            {{ cat.name }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="nav-actions">
+      <input
+        type="text"
+        #searchField
+        placeholder="Search pets..."
+        (keyup.enter)="onSearch($event)"
+        [class.expanded]="showSearch"
+        class="search-input"
+      />
+
+      <a class="nav-icon-link" (click)="toggleSearch()" title="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <a class="nav-icon-link" (click)="handleUserClick()" title="Login">
+        <i class="fa-regular fa-user"></i>
+      </a>
+      <a class="nav-icon-link cart-link" [routerLink]="['/cart']" title="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        @if (cartCount() > 0) {
+          <span class="cart-badge">{{ cartCount() }}</span>
+        }
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="content-area print">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="main-footer no-print">
+  <div class="footer-container">
+    <div class="footer-section brand-info">
+      <div class="footer-logo">
+        <i class="fa-solid fa-paw"></i>
+        <h2>JPetstore</h2>
+      </div>
+      <p class="footer-description">
+        Your trusted companion for premium pet supplies, healthy animals, and expert advice.
+        Bringing joy to homes since 2026.
+      </p>
+    </div>
+
+    <div class="footer-section footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a (click)="(false)">Shop by Pet</a></li>
+        <li><a (click)="(false)">Special Offers</a></li>
+        <li><a (click)="(false)">Customer Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section footer-social">
+      <h3>Connect With Us</h3>
+      <div class="social-icons">
+        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 JPetstore. All rights reserved.</p>
+  </div>
+</footer>

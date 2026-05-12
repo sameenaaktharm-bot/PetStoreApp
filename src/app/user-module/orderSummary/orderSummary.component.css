@@ -1,0 +1,203 @@
+:host {
+  --primary: #4b2406;
+  --dark: #a65d2a;
+  --secondary: #FCF3E2;
+  --light: #f8fafc;
+  --slate-400: #94a3b8;
+  --slate-100: #f1f5f9;
+  --white: #ffffff;
+  
+  display: block;
+  min-height: 100vh;
+  padding: 5rem 1rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--dark);
+}
+
+.invoice-container {
+  max-width: 850px;
+
+  margin: 0 auto;
+  background: var(--white);
+  padding: 4rem;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.306);
+}
+
+/* Branding Bar */
+.invoice-branding {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo i { color: var(--dark); }
+
+.receipt-label {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--dark);
+}
+
+.thick-divider {
+  border: 0;
+  margin-top: 0.1rem;
+  border-top: 2px solid var(--primary);
+  margin-bottom: 2rem;
+}
+
+/* Essentials Grid */
+.essentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 4rem;
+}
+
+.essentials-block { display: flex; flex-direction: column; gap: 0.5rem; }
+.meta-label { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+.meta-value { font-weight: 700; font-size: 1rem; }
+.meta-sub { font-size: 0.85rem; color: var(--dark); }
+
+/* Table Section */
+.table-wrapper { margin-bottom: 3rem; }
+.modern-table { width: 100%; border-collapse: collapse; }
+
+.modern-table th {
+  text-align: right;
+  color: var(--primary);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.modern-table th:first-child {
+  text-align: left;
+}
+
+.modern-table td { padding: 1.5rem 0; border-bottom: 1px solid var(--slate-100); font-size: 0.95rem; }
+
+.item-cell { display: flex; align-items: center; gap: 1rem; }
+.item-cell img { width: 40px; height: 40px; object-fit: contain; filter: grayscale(0.2); }
+.item-name { font-weight: 700; }
+
+.mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--slate-400); }
+.weight-700 { font-weight: 700; }
+
+/* Financial Section */
+.financial-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+.shipping-info i { color: var(--primary); margin-right: 0.5rem; }
+
+.totals-bill { width: 280px; }
+.bill-row {
+  display: flex;
+  color: var(--dark);
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.grand-total {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--dark);
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+/* Actions */
+.invoice-actions {
+  margin-top: 4rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-dark {
+  background: var(--primary);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-light {
+  background: var(--secondary);
+  border-radius: 10px;
+
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  padding: 1.25rem 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-dark:hover { background: var(--dark); }
+.btn-light:hover { background: var(--slate-100); }
+
+.text-right { text-align: right; }
+
+@media print {
+  body {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .invoice-container, 
+  .invoice-container * {
+    visibility: visible;
+  }
+
+  .invoice-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body, html {
+    background: none;
+  }
+
+  .invoice-container, 
+  .summary-card, 
+  .summary-viewport {
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+

@@ -1,0 +1,154 @@
+:host {
+  --primary: #4b2406;
+  --dark: #a65d2a;
+  --secondary: #FCF3E2;
+  --light: #f8fafceb;
+  --text-muted: #64748b;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  min-height: 100vh;
+  padding: 3rem 0;
+  /* Parent component manages the background image/color */
+}
+
+.auth-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.auth-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.393);
+  border: 1px solid #e2e8f0;
+}
+
+.list-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--dark);
+  padding-bottom: 1rem;
+}
+
+.list-header h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin: 0;
+  text-align: center;
+}
+
+/* --- Form Layout --- */
+.form-section {
+  margin-bottom: 2.5rem;
+}
+
+.form-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  border-bottom: 1px dashed #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+/* This creates the side-by-side layout for city/state, password/confirm, etc. */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: flex-end; /* Ensures inputs line up if one label is longer */
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* --- Input Styling --- */
+input, select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  box-sizing: border-box; 
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--dark);
+}
+
+/* --- Button Styling --- */
+.btn-primary {
+  display: block;
+  margin: 3rem auto 0 auto;
+  width: 60%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(75, 36, 6, 0.2);
+}
+
+.btn-primary:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* --- Footer Styling --- */
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--dark);
+}
+
+.auth-footer a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr; 
+    gap: 0;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "billingAddress": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1 234 567 890",
+    "address1": "123 Tech Lane",
+    "address2": "Apt 4B",
+    "city": "Innovation City",
+    "state": "CA",
+    "zip": "94043",
+    "country": "USA"
+  },
+  "shippingAddress": {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "email": "jane.smith@example.com",
+    "phone": "+1 237 567 900",
+    "address1": "101  Way Ave",
+    "address2": "Suite 100",
+    "city": "chicago Valley",
+    "state": "NY",
+    "zip": "10001",
+    "country": "USA"
+  }
+}

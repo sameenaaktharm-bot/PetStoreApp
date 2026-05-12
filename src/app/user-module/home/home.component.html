@@ -1,0 +1,30 @@
+<header class="hero">
+  <div class="hero-content-top">
+    <h1>Welcome to Our Collection</h1>
+    <p>Discover the best pets curated just for you.</p>
+  </div>
+  <div class="hero-content-bottom"></div>
+</header>
+
+<main class="full-width-container">
+  <h2 class="section-title">Explore Categories</h2>
+  <div class="categories-list">
+    @for (cat of this.categories(); track $index) {
+      <div class="category-card" [routerLink]="['/category', cat.categoryId]" key=cat.categoryId>
+        <div class="image-side">
+          <img 
+            [src]="cat.imageUrl ? imageBaseUrl + cat.imageUrl : 'https://via.placeholder.com/300'" 
+            [alt]="cat.name">
+        </div>
+        
+        <div class="description-side">
+          <div class="content">
+            <h3>{{ cat.name }}</h3>
+            <p class="description">{{ cat.description }}</p>
+          </div>
+          <span class="btn-explore">View Collection</span>
+        </div>
+      </div>
+    }
+  </div>
+</main>

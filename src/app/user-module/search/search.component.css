@@ -1,0 +1,135 @@
+:host {
+  --primary: #4b2406;
+  --dark: #a65d2a;
+  --secondary: #FCF3E2; 
+  --light: #f8fafceb;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+  display: block;
+}
+
+.search-results-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 5%;
+}
+
+.results-header {
+  font-size: 2.2rem;
+  font-weight: 790;
+  color: var(--primary);
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 1rem;
+}
+
+/* --- Grid Layout --- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.8rem;
+}
+
+/* --- Card Design --- */
+.product-card {
+  background: var(--primary); 
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  background: var(--dark);
+  box-shadow: 0 8px 20px rgba(17, 11, 8, 0.4);
+  transform: translateY(-5px);
+}
+
+/* Image Styling */
+.product-image-wrapper {
+  position: relative;
+  height: 200px;
+  background: #fff; 
+  overflow: hidden;
+}
+
+.product-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
+}
+
+.category-pill {
+  display: inline-block;
+  background-color: var(--dark); 
+  color: var(--secondary);      
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  margin-bottom: 0.6rem;
+}
+
+/* Ensure the product info aligns correctly with the new element */
+.product-info {
+  padding: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-name {
+  margin: 0 0 0.5rem 0;
+  color: var(--light);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Smooth transition for the pill on hover */
+.product-card:hover .category-pill {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+.view-details-link {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Underline animation */
+.view-details-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1.5px;
+  bottom: -4px;
+  left: 50%;
+  background-color: var(--secondary);
+  transition: all 0.3s ease-in-out;
+}
+
+.product-card:hover .view-details-link::after {
+  width: 100%;
+  left: 0;
+}
+
+.status-message {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-top: 3rem;
+}

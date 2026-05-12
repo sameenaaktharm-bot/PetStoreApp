@@ -1,0 +1,149 @@
+<div class="admin-container">
+  <div class="category-header">
+    <div class="header-left">
+      <div class="title-section">
+        <h2>Variants</h2>
+      </div>
+
+      <div class="selector-group">
+        <div class="select-wrapper">
+          <label>Category</label>
+          <select [(ngModel)]="selectedCategoryId" (change)="onCategoryChange()" class="cat-select">
+            <option *ngFor="let cat of categories" [value]="cat.categoryId">{{ cat.name }}</option>
+          </select>
+        </div>
+
+        <div class="select-wrapper">
+          <label>Product</label>
+          <select
+            [(ngModel)]="selectedProductId"
+            (change)="loadVariants()"
+            class="cat-select"
+            [disabled]="products.length === 0"
+          >
+            <option *ngFor="let prod of products" [value]="prod.productId">{{ prod.name }}</option>
+            <option *ngIf="products.length === 0" disabled>No products found</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button class="add-btn" (click)="openModal()" [disabled]="!selectedProductId">
+      <i class="fa fa-plus"></i> Add Variant
+    </button>
+  </div>
+
+  <div class="table-card">
+    <div *ngIf="variants.length > 0; else noData">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let v of variants">
+            <td>
+              <span class="id-badge">{{ v.variantId }}</span>
+            </td>
+            <td>
+              <div class="img-container">
+                <img
+                  [src]="'http://localhost:8090/images/' + v.imageUrl"
+                  class="table-img"
+                  alt="variant thumbnail"
+                />
+              </div>
+            </td>
+            <td class="font-bold">{{ v.name }}</td>
+            <td class="price-text">₹{{ v.price }}</td>
+            <td>
+              <span [class]="v.stockQuantity > 5 ? 'stock-pill' : 'stock-pill low-stock'">
+                {{ v.stockQuantity }} in stock
+              </span>
+            </td>
+            <td class="text-center">
+              <button class="edit-icon" title="Edit" (click)="editVariant(v)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button class="delete-icon" title="Delete" (click)="deleteVariant(v.variantId)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noData>
+      <div class="empty-state">
+        <i class="fa fa-box-open"></i>
+        <p>No variants found for the selected product.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>{{ isEditMode ? 'Update Variant' : 'New Variant' }}</h3>
+        <div class="context-pill">
+          Target Product ID: <strong>{{ selectedProductId }}</strong>
+        </div>
+      </div>
+
+      <div class="form-body">
+        <div class="input-grid">
+          <div class="input-field">
+            <label>Variant ID</label>
+            <input
+              type="text"
+              [(ngModel)]="variantForm.variantId"
+              placeholder="e.g. VAR-001"
+              [disabled]="isEditMode"
+            />
+          </div>
+          <div class="input-field">
+            <label>Variant Name</label>
+            <input type="text" [(ngModel)]="variantForm.name" placeholder="e.g. Large / Red" />
+          </div>
+          <div class="input-field">
+            <label>Price (₹)</label>
+            <input type="number" [(ngModel)]="variantForm.price" placeholder="0.00" />
+          </div>
+          <div class="input-field">
+            <label>Stock Quantity</label>
+            <input type="number" [(ngModel)]="variantForm.stockQuantity" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="input-field">
+          <label>Description</label>
+          <textarea
+            [(ngModel)]="variantForm.description"
+            placeholder="Technical specifications or details..."
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="file-upload-zone">
+          <label><i class="fa fa-cloud-upload-alt"></i> Upload Variant Image</label>
+          <input type="file" (change)="onFileSelected($event)" />
+          <p class="file-hint" *ngIf="selectedFile">{{ selectedFile.name }} selected</p>
+        </div>
+      </div>
+
+      <div class="modal-btns">
+        <button class="cancel-btn" (click)="showModal = false">Discard</button>
+        <button class="save-btn" (click)="onSubmit()">
+          {{ isEditMode ? 'Apply Changes' : 'Create Variant' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

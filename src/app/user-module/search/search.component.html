@@ -1,0 +1,28 @@
+<div class="search-results-page">
+  <h2 class="results-header">Search Results</h2>
+
+  @if (loading()) {
+    <div class="status-message">Loading products...</div>
+  } @else {
+    @if (results().length === 0) {
+      <div class="status-message">No products found for your search.</div>
+    } @else {
+      <div class="product-grid">
+        @for (product of results(); track product.productId) {
+          <div class="product-card" [routerLink]="['/category',product.category.categoryId, product.productId]">
+            <div class="product-image-wrapper">
+              <img [src]="imageBaseUrl + product.imageUrl" [alt]="product.name">
+            </div>
+            
+            <div class="product-info">
+              <span class="category-pill">{{ product.category.name }}</span>
+              
+              <h3 class="product-name">{{ product.name }}</h3>
+              <a class="view-details-link">View Details</a>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

@@ -1,0 +1,240 @@
+:host {
+  --primary: #4b2406;
+  --dark: #a65d2a;
+  --secondary: #FCF3E2;;
+  --light: #f8fafceb;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-container {
+  padding: 60px 5%;
+  min-height: 100vh;
+  width: 100%;
+  background:url('../../user-module/data/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-sizing: border-box;
+}
+
+/* Header */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.category-header h1 {
+  font-size: 2.2rem;
+  font-weight: 790;
+  color: var(--primary);
+  margin: 0;
+}
+
+.add-btn {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  color: var(--light);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.add-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+}
+
+/* Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.8rem;
+}
+
+.category-card {
+  background: var(--primary);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.category-card:hover {
+  background: var(--dark);
+  box-shadow: 0 8px 20px rgba(17, 11, 8, 0.6);
+  transform: translateY(-2px);
+}
+
+.cat-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #fff;
+  transition: var(--transition);
+}
+
+.category-card:hover .cat-img {
+  transform: scale(1.08);
+}
+
+/* Info */
+.cat-info {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.cat-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--light);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.category-card:hover h3 {
+  color: var(--secondary);
+}
+
+.cat-info p {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin: 0 0 1rem 0;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.edit-icon,
+.delete-icon {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.edit-icon:hover {
+  color: var(--secondary);
+}
+
+.delete-icon:hover {
+  color: crimson;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: var(--secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.modal-content h2,
+.modal-content h3 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.6rem 0;
+  border: 1px solid var(--dark);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.file-upload {
+  margin: 1rem 0;
+}
+
+.preview-img {
+  margin-top: 0.8rem;
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--dark);
+}
+
+/* Modal Buttons */
+.modal-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid var(--dark);
+  color: var(--dark);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cancel-btn:hover {
+  background: var(--dark);
+  color: var(--light);
+}
+
+.save-btn {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: var(--light);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.save-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+}
+
+.save-btn.danger {
+  background: crimson;
+  border-color: crimson;
+}
+
+.save-btn.danger:hover {
+  background: darkred;
+  border-color: darkred;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

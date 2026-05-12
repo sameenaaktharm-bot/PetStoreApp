@@ -1,0 +1,108 @@
+<div class="confirmation-container">
+  <header class="list-header">
+    <h2>Review Your Order</h2>
+    <p>Please check your details before confirming your purchase.</p>
+  </header>
+
+  <div class="checkout-grid">
+    <div class="left-column">
+
+      <!-- Items Section (Existing) -->
+      <section class="review-section">
+        <div class="section-title">
+          <i class="fa-solid fa-box-open"></i>
+          <h3>Items to be Ordered</h3>
+        </div>
+        <div class="items-list">
+          @for (item of cartItems(); track item.variantId) {
+            <div class="item-row">
+              <img [src]="imageBaseUrl + item.productVariant.imageUrl" [alt]="item.productVariant.name" class="mini-thumb">
+              <div class="item-info">
+                <span class="item-name">{{ item.productVariant.name }}</span>
+                <span class="item-qty">Qty: {{ item.quantity }}</span>
+              </div>
+              <span class="item-price">{{ (item.productVariant.price * item.quantity) | currency }}</span>
+            </div>
+          }
+        </div>
+      </section>
+
+      @if (orderData(); as data) {
+        <!-- REPLACE Billing with Payment Details -->
+        <section class="review-section">
+          <div class="section-title">
+            <i class="fa-solid fa-credit-card"></i>
+            <h3>Payment Method</h3>
+          </div>
+          <div class="address-card">
+            <p><strong>Card Type:</strong> {{ data.cardType }}</p>
+            <p><strong>Card Number:</strong> **** **** **** {{ data.cardNumber.slice(-4) }}</p>
+            <p><strong>Expiry:</strong> {{ data.expiryDate }}</p>
+            <button class="btn-edit" routerLink="/cart/order-address">Edit Payment</button>
+          </div>
+        </section>
+
+        <!-- Shipping Address from Local Storage -->
+        <section class="review-section">
+          <div class="section-title">
+            <i class="fa-solid fa-truck"></i>
+            <h3>Shipping Details</h3>
+          </div>
+          <div class="address-card">
+            <p class="user-name">{{ data.fullName }}</p>
+            <p>{{ data.address }}</p>
+            <p>{{ data.city }}, {{ data.state }} {{ data.pincode }}</p>
+            <p>{{ data.country }}</p>
+            <p><strong>Phone:</strong> {{ data.mobileNumber }}</p>
+            <button class="btn-edit" routerLink="/cart/order-address">Edit Shipping</button>
+          </div>
+        </section>
+      }
+    </div>
+
+    <!-- Right Column (Summary) remains the same -->
+    <aside class="right-column">
+      <div class="summary-card">
+        <h3>Order Summary</h3>
+        <div class="summary-row">
+          <span>Date & Time</span>
+          <span>{{ currentDateTime | date:'medium' }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>{{ subtotal() | currency }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span class="free-text">Free</span>
+        </div>
+        <hr>
+        <div class="summary-row total">
+          <span>Total&nbsp;:</span>
+          <span class="total-price">{{ subtotal() | currency }}</span>
+        </div>
+        
+        <button class="btn-confirm-final" (click)="confirmOrder()" [disabled]="!orderData()">
+          Confirm Order
+        </button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+@if (showPopup) {
+  <div class="modal-overlay">
+    <div class="modal-content">
+      <div class="success-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h2>Order Placed Successfully!</h2>
+      <p>Your order has been recorded and is being prepared for shipment.</p>
+      
+      <div class="modal-actions">
+        <button class="btn-view-summary" [routerLink]="['/cart/orderSummary']"  (click)="togglePopup()">View Order Summary</button>
+        <button class="btn-summary" [routerLink]="['/']">Back to Shop</button>
+      </div>
+    </div>
+  </div>
+}
