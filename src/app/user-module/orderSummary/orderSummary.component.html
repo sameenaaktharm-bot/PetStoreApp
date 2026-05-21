@@ -53,10 +53,10 @@
                   </div>
                 </td>
                 <td class="text-right mono">{{ item.variantId }}</td>
-                <td class="text-right">{{ item.price | currency }}</td>
+                <td class="text-right">{{ item.price | currency:'INR' }}</td>
                 <td class="text-right">{{ item.quantity }}</td>
                 <td class="text-right weight-700">
-                  {{ (item.price * item.quantity) | currency }}
+                  {{ (item.price * item.quantity) | currency:'INR' }}
                 </td>
               </tr>
             }
@@ -75,7 +75,7 @@
         <div class="totals-bill">
           <div class="bill-row">
             <span>Subtotal</span>
-            <span>{{ order.totalAmount | currency }}</span>
+            <span>{{ order.totalAmount | currency:'INR' }}</span>
           </div>
           <div class="bill-row">
             <span>Tax</span>
@@ -83,7 +83,7 @@
           </div>
           <div class="bill-row grand-total">
             <span>Total Amount Paid</span>
-            <span>{{ order.totalAmount | currency }}</span>
+            <span>{{ order.totalAmount | currency:'INR' }}</span>
           </div>
         </div>
       </div>
