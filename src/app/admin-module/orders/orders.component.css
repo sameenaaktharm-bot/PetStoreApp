@@ -206,3 +206,51 @@
   font-size: 1.2rem;
   cursor: pointer;
 }
+
+.items-box {
+  background: rgba(166, 93, 42, 0.05); /* Slightly lighter tinted bg than the info-box for visual hierarchy */
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border: 1px solid rgba(166, 93, 42, 0.2); /* Soft border matching your dark variable */
+  color: var(--primary);
+}
+
+.items-box strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  border-bottom: 1px solid rgba(166, 93, 42, 0.15);
+  padding-bottom: 0.25rem;
+}
+
+.order-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted rgba(166, 93, 42, 0.2);
+  transition: var(--transition);
+}
+
+.order-item:last-child {
+  border-bottom: none; /* Clears the final bottom border line */
+  padding-bottom: 0;
+}
+
+.order-item:first-of-type {
+  padding-top: 0.25rem;
+}
+
+.order-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between; /* Keeps variant name on left, qty & price on right */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.order-item span {
+  font-weight: 600;
+  color: var(--dark); /* Highlight the quantity using your mid-tone brown */
+}

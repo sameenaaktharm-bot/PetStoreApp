@@ -55,7 +55,7 @@
               {{ order.status || 'Pending' }}
             </span>
           </td>
-          <td class="price-text">{{ order.totalAmount | currency }}</td>
+          <td class="price-text">{{ order.totalAmount | currency:'INR' }}</td>
           <td>
             <button class="edit-icon" (click)="viewOrder(order)">
               <i class="fa fa-eye"></i>
@@ -90,6 +90,18 @@
             <option value="CANCELLED">Cancelled</option>
           </select>
         </div>
+
+        <!-- New Items List Section -->
+      <div class="items-box">
+        <strong>Items Ordered:</strong>
+        <div class="order-item" *ngFor="let item of selectedOrder.items">
+          <p>
+            <strong>Variant:</strong> {{ item.variantId }} 
+            <span>(Qty: {{ item.quantity }})</span> 
+            ₹{{ item.price }} each
+          </p>
+        </div>
+      </div>
 
         <div class="info-box">
           <strong>Shipping To:</strong>

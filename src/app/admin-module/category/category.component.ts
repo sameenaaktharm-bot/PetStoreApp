@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private cdr: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadCategories();
