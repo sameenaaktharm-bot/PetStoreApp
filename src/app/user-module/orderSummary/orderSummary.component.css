@@ -25,7 +25,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.306);
 }
 
-/* Branding Bar */
 .invoice-branding {
   display: flex;
   justify-content: space-between;
@@ -60,7 +59,6 @@
   margin-bottom: 2rem;
 }
 
-/* Essentials Grid */
 .essentials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -72,7 +70,6 @@
 .meta-value { font-weight: 700; font-size: 1rem; }
 .meta-sub { font-size: 0.85rem; color: var(--dark); }
 
-/* Table Section */
 .table-wrapper { margin-bottom: 3rem; }
 .modern-table { width: 100%; border-collapse: collapse; }
 
@@ -99,7 +96,6 @@
 .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--slate-400); }
 .weight-700 { font-weight: 700; }
 
-/* Financial Section */
 .financial-section {
   display: flex;
   justify-content: space-between;
@@ -126,7 +122,6 @@
   font-weight: 900;
 }
 
-/* Actions */
 .invoice-actions {
   margin-top: 4rem;
   display: flex;

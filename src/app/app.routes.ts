@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout';
 
-// --- USER SIDE IMPORTS ---
 import { HomeComponent } from './user-module/home/home.component';
 import { CategoryComponent as UserCategory } from './user-module/category/category.component';
 import { ItemsComponent } from './user-module/items/items.component';

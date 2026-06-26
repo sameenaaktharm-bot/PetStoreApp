@@ -32,7 +32,6 @@ export class OrderService {
     return new HttpHeaders({ 'Authorization': `Bearer ${token}` });
   }
 
-  // Fetch orders for a specific user
   getUserOrders(userId: string) {
     return this.http.get<any[]>(`${this.userOrdersUrl}/${userId}`, { headers: this.getHeaders() });
   }
@@ -41,7 +40,6 @@ export class OrderService {
   return this.http.get<any[]>('http://localhost:8090/api/variants/search');
 }
 
-  // Submit the order
   postOrder(userId: string, payload: OrderDetails) {
     return this.http.post(`${this.checkoutUrl}/${userId}`, payload, { headers: this.getHeaders() });
   }
@@ -50,7 +48,6 @@ export class OrderService {
 resetOrderSignal(): OrderDetails | null {
   const userData = this.userService.userSignal();
   
-  // Log this to see if it's null in your console
   console.log('User data in Service:', userData);
 
   if (!userData) return null;

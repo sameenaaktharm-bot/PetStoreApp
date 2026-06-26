@@ -23,14 +23,12 @@
   padding-bottom: 1rem;
 }
 
-/* --- Grid Layout --- */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1.8rem;
 }
 
-/* --- Card Design --- */
 .product-card {
   background: var(--primary); 
   border-radius: 20px;
@@ -47,7 +45,6 @@
   transform: translateY(-5px);
 }
 
-/* Image Styling */
 .product-image-wrapper {
   position: relative;
   height: 200px;
@@ -79,7 +76,6 @@
   margin-bottom: 0.6rem;
 }
 
-/* Ensure the product info aligns correctly with the new element */
 .product-info {
   padding: 1.2rem;
   text-align: center;
@@ -96,7 +92,6 @@
   line-height: 1.3;
 }
 
-/* Smooth transition for the pill on hover */
 .product-card:hover .category-pill {
   background-color: var(--secondary);
   color: var(--primary);
@@ -110,7 +105,6 @@
   position: relative;
 }
 
-/* Underline animation */
 .view-details-link::after {
   content: '';
   position: absolute;

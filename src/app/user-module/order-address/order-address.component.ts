@@ -30,18 +30,15 @@ ngOnInit(): void {
   const savedData = localStorage.getItem('temp_order');
   
   if (savedData) {
-    // If we have local storage, we are good to go!
     const parsedData = JSON.parse(savedData);
     this.patchFormWithOrderData(parsedData);
   } 
   else {
-    // No local storage? Check if User Signal is ready
     if (this.userService.userSignal()) {
       this.data = this.orderService.resetOrderSignal();
       console.log(this.data)
       if (this.data) this.patchFormWithOrderData(this.data);
     } else {
-      // User Signal is empty (Refresh scenario), fetch it first!
       this.userService.loadUserDetails().subscribe({
         next: () => {
           this.data = this.orderService.resetOrderSignal();
@@ -55,12 +52,10 @@ ngOnInit(): void {
 
   initForm(): void {
     this.orderForm = this.fb.group({
-      // Payment Details
       cardType: ['Visa', Validators.required],
       cardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{16}$')]],
       expiryDate: ['', [Validators.required, Validators.pattern('^(0[1-9]|1[0-2])\\/\\d{4}$')]],
       
-      // Shipping/Billing Details
       fullName: ['', Validators.required],
       mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10,15}$')]],
       address: ['', Validators.required],
@@ -71,9 +66,7 @@ ngOnInit(): void {
     });
   }
 
-  /**
-   * Maps OrderDetails interface fields to Form Control names
-   */
+
   private patchFormWithOrderData(data: OrderDetails) {
     this.orderForm.patchValue({
       fullName: data.fullName,
@@ -93,7 +86,6 @@ ngOnInit(): void {
     if (this.orderForm.valid) {
       const formData = this.orderForm.value;
 
-      // Map the form values back into the OrderDetails structure
       const updatedOrder: OrderDetails = {
         fullName: formData.fullName,
         mobileNumber: formData.mobile,
@@ -108,10 +100,8 @@ ngOnInit(): void {
       };
 
       localStorage.setItem('temp_order', JSON.stringify(updatedOrder));
-      // Proceed to the next step
       this.router.navigate(['cart/orderConfirmation']);
     } else {
-      // Highlight errors if the form is invalid
       this.orderForm.markAllAsTouched();
     }
   }

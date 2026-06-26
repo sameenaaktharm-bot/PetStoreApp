@@ -16,7 +16,6 @@
   padding: 3rem 5%;
 }
 
-/* --- Layout Grid --- */
 .cart-content {
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -24,7 +23,6 @@
   align-items: start;
 }
 
-/* --- Table-Like List Container --- */
 .rows-wrapper {
   display: flex;
   flex-direction: column;
@@ -34,7 +32,6 @@
   overflow: hidden;
 }
 
-/* --- Item Row Cards --- */
 .item-row-card {
   display: grid;
   grid-template-columns: auto 1fr auto auto;
@@ -87,7 +84,6 @@
 }
 
 
-/* --- Quantity Controls --- */
 .quantity-controls {
   display: flex;
   column-gap: 0.2rem;
@@ -119,7 +115,6 @@
   color: white;
 }
 
-/* --- UPDATED: Disabled State for Plus Icon --- */
 .btn-qty:disabled {
   background: #e2e8f0;
   color: #94a3b8;
@@ -135,7 +130,6 @@
   text-align: center;
 }
 
-/* --- Price & Actions --- */
 .item-actions {
   text-align: right;
   display: flex;
@@ -165,7 +159,6 @@
   color: white;
 }
 
-/* --- Summary Sidebar --- */
 .cart-summary {
   position: sticky;
   top: 2rem;
@@ -253,8 +246,6 @@ hr {
   border-color: var(--dark);
 }
 
-
-/* --- Empty State --- */
 .no-data {
   text-align: center;
   padding: 3rem 5rem;
@@ -291,7 +282,6 @@ hr {
   margin-bottom: 2rem;
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {
   .cart-content {
     grid-template-columns: 1fr;

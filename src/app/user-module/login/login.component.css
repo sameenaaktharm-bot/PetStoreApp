@@ -10,7 +10,6 @@
   padding: 2rem 0;
 }
 
-/* --- Container & Card --- */
 .auth-container {
   max-width: 550px; 
   margin: 0 auto;
@@ -25,7 +24,6 @@
   border: 1px solid #f1f5f9;
 }
 
-/* --- Header Style --- */
 .list-header {
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--dark);
@@ -39,7 +37,6 @@
   margin: 0;
 }
 
-/* --- Form Sections (For Login) --- */
 .form-group {
   margin-bottom: 1.25rem;
   text-align: left;
@@ -73,9 +70,6 @@ input:focus, select:focus {
   box-shadow: 0 0 0 1px var(--dark);
 }
 
-
-
-/* --- Buttons --- */
 .btn-primary {
   width: 60%;
   display: block;
@@ -101,7 +95,6 @@ input:focus, select:focus {
   cursor: not-allowed;
 }
 
-/* --- Helper Links --- */
 .auth-footer {
   text-align: center;
   margin-top: 1.5rem;

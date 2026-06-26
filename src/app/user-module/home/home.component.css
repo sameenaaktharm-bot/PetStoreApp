@@ -10,21 +10,18 @@
   background-color: var(--secondary); 
 }
 
-/* --- HERO SECTION --- */
 .hero {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
   min-height: 600px; 
-  /* Background Image Setup */
   background-image: url('../data/banner.png'); 
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
 }
 
-/* The Welcome Text */
 .hero-content-top {
   text-align: center;
   padding-top: 1.5rem; 
@@ -44,7 +41,6 @@
   
 }
 
-/* The Explore Categories Text */
 .hero-content-bottom {
   width: 96%;
   margin: 0 auto;
@@ -84,8 +80,6 @@
   color: var(--primary);
 }
 
-
-/* --- MAIN CONTENT & CARDS --- */
 .full-width-container {
   width: 96%;
   margin: 0 auto; 
@@ -182,7 +176,6 @@
     left: 0;   
 }
 
-/* Responsive: Stack for tablet/mobile */
 @media (max-width: 900px) {
   .hero {
     min-height: 400px; 

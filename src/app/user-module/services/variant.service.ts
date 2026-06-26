@@ -15,7 +15,6 @@ export class VariantService {
     return this.http.get<any[]>(`${this.apiUrl}/${productId}`);
   }
 
-  // New method for product metadata
   getProductById(productId: string): Observable<any> {
     return this.http.get<any>(`${this.productApi}/${productId}`);
   }

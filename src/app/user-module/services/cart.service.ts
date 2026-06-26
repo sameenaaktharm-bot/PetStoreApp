@@ -32,29 +32,26 @@ export class CartService {
   refreshCart(): void {
     const userId = localStorage.getItem('userId');
     if (!userId) {
-      this.cartItems.set([]); // Clear if logged out
+      this.cartItems.set([]); 
       return;
     }
 
     this.getCart(userId).subscribe({
       next: (data: any) => {
-        // Pushing data here triggers the UI update everywhere
         this.cartItems.set(data.items || []);
-        console.log('Cart loaded:', this.cartItems());   // ✅ logs after data arrives
+        console.log('Cart loaded:', this.cartItems());   
         console.log('Subtotal:', this.subtotal());
       },
       error: (err) => console.error('Auto-refresh failed', err)
     });
   }
 
-  // 1. Fetch Cart Items
   getCart(userId: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/${userId}`, {
       headers: this.getHeaders()
     });
   }
 
-  // 2. Add Item (Used in Product/Category pages)
   addToCart(userId: string, variantId: string, quantity: number): Observable<any> {
     const params = new HttpParams()
       .set('variantId', variantId)
@@ -66,7 +63,6 @@ export class CartService {
     });
   }
 
-  // 3. Update Quantity (Used in Cart page)
   updateCart(userId: string, cartItemId: string, variantId: string, quantity: number): Observable<any> {
     const params = new HttpParams()
       .set('variantId', variantId)
@@ -78,7 +74,6 @@ export class CartService {
     });
   }
 
-  // 4. Remove Item
   deleteItem(userId: string, cartItemId: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${userId}/item/${cartItemId}`, {
       headers: this.getHeaders()

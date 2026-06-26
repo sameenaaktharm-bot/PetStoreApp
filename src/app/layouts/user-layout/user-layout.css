@@ -54,7 +54,6 @@
   padding: 1.2rem 5%; 
 }
 
-/* Logo Container */
 .logo-container {
   display: flex;
   align-items: center;
@@ -82,7 +81,6 @@
   color: var(--dark);
 }
 
-/* Nav Links */
 .nav-links {
   display: flex;
   gap: 3.5rem; 
@@ -100,7 +98,6 @@
 }
 
 
-/* Nav Actions */
 .nav-actions {
   display: flex;
   gap: 2rem; 
@@ -214,7 +211,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Brand Section */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -242,7 +238,6 @@
   margin: 0;
 }
 
-/* Quick Links */
 .footer-links ul {
   list-style: none;
   padding: 0;
@@ -265,7 +260,6 @@
   padding-left: 5px; 
 }
 
-/* Social Icons */
 .social-icons {
   display: flex;
   gap: 0.8rem; 
@@ -290,7 +284,6 @@
   transform: translateY(-3px);
 }
 
-/* Copyright Bottom Bar */
 .footer-bottom {
   text-align: center;
   padding: 1rem 5%; 
@@ -304,7 +297,6 @@
   font-size: 0.85rem;
 }
 
-/* Responsive adjustments for mobile */
 @media (max-width: 900px) {
   .footer-container {
     grid-template-columns: 1fr; 

@@ -16,7 +16,6 @@ export class AdminLayoutComponent implements OnInit {
   constructor(private router: Router) {}
 
 ngOnInit(): void {
-  // 1. Get token from LocalStorage (where your Login component saved it)
   const token = localStorage.getItem('token');
 
   if (!token) {
@@ -29,7 +28,6 @@ ngOnInit(): void {
     const decoded: any = jwtDecode(token);
     const roles = decoded.role || decoded.authorities || [];
     
-    // 2. Critical: Check if the role matches exactly what Spring Boot expects
     if (!roles.includes('ROLE_ADMIN')) {
       console.warn('Forbidden: User does not have ROLE_ADMIN');
       this.router.navigate(['/login']);

@@ -1,8 +1,8 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, ActivatedRoute, Router } from '@angular/router'; // Added Router
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { VariantService } from '../services/variant.service';
-import { CartService } from '../services/cart.service'; // Adjust path as needed
+import { CartService } from '../services/cart.service'; 
 
 @Component({
   selector: 'app-items',
@@ -13,9 +13,9 @@ import { CartService } from '../services/cart.service'; // Adjust path as needed
 })
 export class ItemsComponent implements OnInit {
   private variantService = inject(VariantService);
-  private cartService = inject(CartService); // Inject CartService
+  private cartService = inject(CartService); 
   private route = inject(ActivatedRoute);
-  private router = inject(Router); // Inject Router for redirection
+  private router = inject(Router); 
 
   items = signal<any[]>([]);
   product = signal<any>(null); 
@@ -45,12 +45,11 @@ export class ItemsComponent implements OnInit {
 
 
 
-  // New Method to handle Add to Cart
   onAddToCart(variantId: string): void {
 
     const selectedItem = this.items().find(i => i.variantId === variantId);
     if (selectedItem && selectedItem.stockQuantity <= 0) {
-        return; // Exit silently or show an alert
+        return; 
     }
       
     const userId = localStorage.getItem('userId');

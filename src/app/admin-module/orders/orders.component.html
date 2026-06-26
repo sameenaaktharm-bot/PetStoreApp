@@ -12,19 +12,14 @@
 
         <select [(ngModel)]="filterStatus" (change)="applyFilters()" class="cat-select">
           <option value="">All Status</option>
-          <option value="PENDING">Pending</option>
+          <!-- <option value="PENDING">Pending</option> -->
           <option value="PROCESSING">Processing</option>
           <option value="SHIPPED">Shipped</option>
           <option value="DELIVERED">Delivered</option>
           <option value="CANCELLED">Cancelled</option>
         </select>
 
-        <input
-          type="date"
-          [(ngModel)]="filterDate"
-          (change)="applyFilters()"
-          class="cat-select date-input"
-        />
+        <input type="date" [(ngModel)]="filterDate" (change)="applyFilters()" class="cat-select date-input" />
       </div>
     </div>
   </div>
@@ -83,7 +78,7 @@
         <div class="input-group">
           <label>Change Status</label>
           <select [(ngModel)]="selectedOrder.status" class="modal-select">
-            <option value="PENDING">Pending</option>
+            <!-- <option value="PENDING">Pending</option> -->
             <option value="PROCESSING">Processing</option>
             <option value="SHIPPED">Shipped</option>
             <option value="DELIVERED">Delivered</option>
@@ -91,17 +86,16 @@
           </select>
         </div>
 
-        <!-- New Items List Section -->
-      <div class="items-box">
-        <strong>Items Ordered:</strong>
-        <div class="order-item" *ngFor="let item of selectedOrder.items">
-          <p>
-            <strong>Variant:</strong> {{ item.variantId }} 
-            <span>(Qty: {{ item.quantity }})</span> 
-            ₹{{ item.price }} each
-          </p>
+        <div class="items-box">
+          <strong>Items Ordered:</strong>
+          <div class="order-item" *ngFor="let item of selectedOrder.items">
+            <p>
+              <strong>Variant:</strong> {{ item.variantId }}
+              <span>(Qty: {{ item.quantity }})</span>
+              ₹{{ item.price }} each
+            </p>
+          </div>
         </div>
-      </div>
 
         <div class="info-box">
           <strong>Shipping To:</strong>

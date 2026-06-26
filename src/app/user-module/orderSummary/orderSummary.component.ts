@@ -18,13 +18,11 @@ export class OrderSummaryComponent implements OnInit {
 
   readonly imageBaseUrl = 'http://localhost:8090/images/';
   
-  // Use a single signal for the entire order object
   currentOrder = signal<any>(null);
   isLoading = signal(true);
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
-    // Check if orderId was passed in the URL (e.g., ?orderId=5)
     const paramId = this.route.snapshot.queryParamMap.get('orderId');
 
     if (userId) {
@@ -41,15 +39,12 @@ export class OrderSummaryComponent implements OnInit {
         let selectedOrder;
 
         if (paramId) {
-          // 1. If coming from Order History, find the matching ID
           selectedOrder = orders.find(o => o.orderId.toString() === paramId);
         } else {
-          // 2. If coming from Confirmation, get the latest (highest ID or last in list)
           selectedOrder = orders.reduce((prev, current) => (prev.orderId > current.orderId) ? prev : current);
         }
 
         if (selectedOrder) {
-          // Enrich items with variant details (names/images)
           selectedOrder.enrichedItems = selectedOrder.items.map((item: any) => {
             const v = variants.find(varnt => varnt.variantId === item.variantId);
             return {
@@ -71,7 +66,6 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   clear() {
-    // No longer needing to clear localStorage as we use the database!
     console.log('Navigating back to shop...');
   }
 }

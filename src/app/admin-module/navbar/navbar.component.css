@@ -6,7 +6,6 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Navbar Container */
 .nav-bar {
   background: var(--primary);
   box-shadow: 0 2px 5px var(--primary);
@@ -52,7 +51,6 @@
   color: var(--dark);
 }
 
-/* Nav Items */
 .nav-items {
   display: flex;
   gap: 2.5rem;
@@ -81,7 +79,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Active link underline */
 .nav-items a.active-link::after {
   width: 100%;
   left: 0;
@@ -99,7 +96,6 @@
   color: var(--dark);
 }
 
-/* Right Navbar */
 .right-navbar {
   display: flex;
   align-items: center;
@@ -121,7 +117,6 @@
   transform: translateY(-2px);
 }
 
-/* Dropdown */
 .profile-dropdown {
   position: absolute;
   top: 120%;

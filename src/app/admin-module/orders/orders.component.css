@@ -18,7 +18,6 @@
   box-sizing: border-box;
 }
 
-/* Header */
 .category-header {
   display: flex;
   justify-content: space-between;
@@ -72,7 +71,6 @@
   transition: var(--transition);
 }
 
-/* Table Card */
 .table-card {
   background: var(--primary);
   border-radius: 12px;
@@ -113,7 +111,6 @@
 .status-pill.cancelled { background: #f8d7da; color: #721c24; }
 .status-pill.shipped { background: #e0cffc; color: #6610f2; }
 
-/* Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -208,11 +205,11 @@
 }
 
 .items-box {
-  background: rgba(166, 93, 42, 0.05); /* Slightly lighter tinted bg than the info-box for visual hierarchy */
+  background: rgba(166, 93, 42, 0.05); 
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
-  border: 1px solid rgba(166, 93, 42, 0.2); /* Soft border matching your dark variable */
+  border: 1px solid rgba(166, 93, 42, 0.2);
   color: var(--primary);
 }
 
@@ -232,7 +229,7 @@
 }
 
 .order-item:last-child {
-  border-bottom: none; /* Clears the final bottom border line */
+  border-bottom: none;
   padding-bottom: 0;
 }
 
@@ -244,7 +241,7 @@
   margin: 0;
   font-size: 0.9rem;
   display: flex;
-  justify-content: space-between; /* Keeps variant name on left, qty & price on right */
+  justify-content: space-between; 
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
@@ -252,5 +249,5 @@
 
 .order-item span {
   font-weight: 600;
-  color: var(--dark); /* Highlight the quantity using your mid-tone brown */
+  color: var(--dark); 
 }

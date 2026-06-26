@@ -21,7 +21,6 @@ export class OrderConfirmationComponent implements OnInit {
   cartItems = this.cartService.cartItems;
   subtotal = this.cartService.subtotal;
   
-  // Signal to store the order data retrieved from LocalStorage
   orderData = signal<OrderDetails | null>(null);
 
   currentDateTime = new Date();
@@ -48,7 +47,6 @@ export class OrderConfirmationComponent implements OnInit {
   if (userId && payload) {
     this.orderService.postOrder(userId, payload).subscribe({
       next: () => {
-        // 1. Store the "snapshot" for the Summary page
         const summaryData = {
           items: currentItems,
           total: currentTotal,

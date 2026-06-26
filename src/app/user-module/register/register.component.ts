@@ -39,7 +39,7 @@ private initForm(): void {
     repeatPassword: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     phNo: [null, [Validators.required]],
-    address: ['', [Validators.required]], // Added Address Control
+    address: ['', [Validators.required]],
     city: ['', [Validators.required]],
     pincode: [null, [Validators.required]],
     state: ['', [Validators.required]],
@@ -49,7 +49,6 @@ private initForm(): void {
   });
 }
 
-// Inside onSubmit()
 onSubmit(): void {
   if (this.registerForm.valid) {
     const formData = this.registerForm.value;
@@ -59,7 +58,7 @@ onSubmit(): void {
       password: formData.password,
       email: formData.email,
       phNo: formData.phNo,
-      address: formData.address, // Added to payload
+      address: formData.address, 
       city: formData.city,
       pincode: formData.pincode,
       state: formData.state,
@@ -67,10 +66,8 @@ onSubmit(): void {
       roles: ["ROLE_USER"]
     };
  
-    // Add { responseType: 'text' } as the third argument
     this.http.post(this.apiUrl, payload, { responseType: 'text' }).subscribe({
       next: (response) => {
-        // Now 'response' will be the string "User registered successfully."
         console.log('Success:', response);
         alert(response);
         this.router.navigate(['/login']);

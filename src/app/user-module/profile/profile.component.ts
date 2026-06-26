@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
     this.initForm();
     this.loadOrders();
 
-    // Fill form from existing signal if available, otherwise fetch
     const currentData = this.userService.userSignal();
     if (currentData) {
       this.patchForm(currentData);
@@ -111,7 +110,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // loadOrders() logic remains here as it's specific to the Profile view
   loadOrders(): void {
     this.orders = [
       { id: 'ORD-1001', date: '2024-04-10', total: 45.99, status: 'Delivered' }
@@ -120,16 +118,12 @@ export class ProfileComponent implements OnInit {
 
 
   onLogout(): void {
-  // 1. Clear the Signal in the service to reset the UI globally
   this.userService.clearUser();
 
-  // 2. Reset the Cart Signal
   this.cartService.cartItems.set([]);
 
-  // 3. Clear all browser storage
   localStorage.clear();
 
-  // 4. Redirect to login
   this.router.navigate(['/login']);
 }
 }

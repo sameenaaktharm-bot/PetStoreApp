@@ -18,7 +18,6 @@
   box-sizing: border-box;
 }
 
-/* Header */
 .category-header {
   display: flex;
   justify-content: space-between;
@@ -99,7 +98,6 @@
   border-color: var(--dark);
 }
 
-/* Table Card */
 .table-card {
   background: var(--primary);
   border-radius: 12px;
@@ -187,7 +185,6 @@
   text-align: center;
 }
 
-/* Action Buttons */
 .edit-icon,
 .delete-icon {
   background: transparent;
@@ -207,7 +204,6 @@
   color: crimson;
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 2rem;
@@ -219,7 +215,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -321,7 +316,6 @@
   color: var(--dark);
 }
 
-/* Modal Buttons */
 .modal-btns {
   display: flex;
   justify-content: flex-end;
@@ -360,7 +354,6 @@
   border-color: var(--dark);
 }
 
-/* Responsive */
 @media (max-width: 700px) {
   .input-grid {
     grid-template-columns: 1fr;

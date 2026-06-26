@@ -11,7 +11,6 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* --- Header Section --- */
 .list-header {
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 1.5rem;
@@ -82,8 +81,6 @@
   color: var(--bg);
 }
 
-
-/* Item Rows */
 .item-row {
   display: flex;
   align-items: center;
@@ -114,7 +111,6 @@
 .item-qty { font-size: 0.85rem; color: var(--dark); }
 .item-price { font-weight: 800; color: var(--dark); }
 
-/* Sidebar */
 .summary-card {
   background: white;
   padding: 2rem;
@@ -136,8 +132,6 @@
   margin-bottom: 1rem;
   font-size: 0.95rem;
 }
-
-
 
 .total { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-top: 1rem; }
 
@@ -162,7 +156,6 @@
 
 .btn-confirm-final:hover { background: var(--dark);}
 
-/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0;

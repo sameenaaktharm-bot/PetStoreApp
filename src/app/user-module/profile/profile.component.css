@@ -1,5 +1,4 @@
 :host {
-  /* Theme Variables - Adjust these to match your app colors */
   --primary: #4b2406;
   --dark: #a65d2a;
   --secondary: #FCF3E2;
@@ -21,7 +20,6 @@
   padding: 0 20px;
 }
 
-/* Header Styling */
 .list-header {
   margin-bottom: 2rem;
 }
@@ -38,7 +36,6 @@
   font-size: 1rem;
 }
 
-/* Grid Layout */
 .profile-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr; 
@@ -46,7 +43,6 @@
   align-items: start;
 }
 
-/* Card General Styling */
 .profile-card {
   background: white;
   padding: 2rem;
@@ -65,7 +61,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Form Styling */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,7 +95,6 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(108, 195, 124, 0.15);
 }
 
-/* Primary Button */
 .btn-primary {
   width: 100%;
   background-color: var(--primary);
@@ -124,7 +118,6 @@ input:focus {
   cursor: not-allowed;
 }
 
-/* Sidebar & Action Cards */
 .profile-sidebar {
   display: flex;
   flex-direction: column;
@@ -138,7 +131,6 @@ input:focus {
   margin-bottom: 1.5rem;
 }
 
-/* Nav Action Button (Order History) */
 .btn-nav-action {
   width: 100%;
   display: flex;
@@ -160,7 +152,6 @@ input:focus {
   color: var(--light);
 }
 
-/* Action List (Logout) */
 .action-list {
   list-style: none;
   padding: 0;
@@ -191,7 +182,6 @@ input:focus {
   opacity: 1;                   
 }
 
-/* Responsive Design */
 @media (max-width: 900px) {
   .profile-grid {
     grid-template-columns: 1fr;

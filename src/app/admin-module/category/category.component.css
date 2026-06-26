@@ -18,7 +18,6 @@
   box-sizing: border-box;
 }
 
-/* Header */
 .category-header {
   display: flex;
   justify-content: space-between;
@@ -51,7 +50,6 @@
   border-color: var(--dark);
 }
 
-/* Grid */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -84,7 +82,6 @@
   transform: scale(1.08);
 }
 
-/* Info */
 .cat-info {
   padding: 1.25rem;
   text-align: center;

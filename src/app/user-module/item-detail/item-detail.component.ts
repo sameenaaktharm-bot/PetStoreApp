@@ -1,8 +1,8 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, ActivatedRoute, Router } from '@angular/router'; // Added Router
+import { RouterModule, ActivatedRoute, Router } from '@angular/router'; 
 import { VariantService } from '../services/variant.service'; 
-import { CartService } from '../services/cart.service'; // Added CartService
+import { CartService } from '../services/cart.service'; 
 
 @Component({
   selector: 'app-item-detail',
@@ -15,7 +15,7 @@ export class ItemDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private variantService = inject(VariantService);
-  private cartService = inject(CartService); // Inject the Service
+  private cartService = inject(CartService); 
 
   item = signal<any | null>(null);
   product = signal<any>(null); 
@@ -55,7 +55,6 @@ export class ItemDetailComponent implements OnInit {
 
   increaseQuantity() {
     const currentItem = this.item();
-    // Logic: Don't exceed 10 or the available stock quantity
     if (currentItem && this.quantity() < Math.min(10, currentItem.stockQuantity)) {
       this.quantity.update(v => v + 1);
     }
@@ -71,7 +70,6 @@ export class ItemDetailComponent implements OnInit {
     const userId = localStorage.getItem('userId');
     const currentItem = this.item();
 
-    // 1. Safety Guard: Check stock before proceeding
     if (!currentItem || currentItem.stockQuantity <= 0) {
         return;
     }
@@ -87,8 +85,6 @@ export class ItemDetailComponent implements OnInit {
         next: (response) => {
           console.log('Added to cart:', response);
           
-          // --- THE CRITICAL STEP ---
-          // This refreshes the Signal in the Service, which triggers the Navbar update
           this.cartService.refreshCart(); 
         },
         error: (err) => {

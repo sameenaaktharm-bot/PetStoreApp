@@ -27,13 +27,11 @@ export class MyOrdersComponent implements OnInit {
   }
 
   loadCompleteData(userId: string) {
-    // Fetch both orders and all variants simultaneously
     forkJoin({
       orders: this.orderService.getUserOrders(userId),
       variants: this.orderService.getAllVariants()
     }).subscribe({
       next: ({ orders, variants }) => {
-        // Map variant images into the order items
         const enrichedOrders = orders.map(order => ({
           ...order,
           items: order.items.map((item: any) => {
@@ -46,7 +44,7 @@ export class MyOrdersComponent implements OnInit {
           })
         }));
 
-        this.orders.set(enrichedOrders.reverse()); // Newest first
+        this.orders.set(enrichedOrders.reverse()); 
         this.isLoading.set(false);
       },
       error: (err) => {

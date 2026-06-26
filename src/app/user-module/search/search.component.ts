@@ -16,12 +16,10 @@ export class SearchComponent implements OnInit {
   
   readonly imageBaseUrl = 'http://localhost:8090/images/';
   
-  // State
   private allProducts = signal<any[]>([]);
   query = signal<string>('');
   loading = signal(true);
 
-  // Computed signal that filters products automatically when either changes
   results = computed(() => {
     const q = this.query().toLowerCase();
     if (!q) return [];

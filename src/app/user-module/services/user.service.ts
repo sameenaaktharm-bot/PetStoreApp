@@ -19,7 +19,6 @@ export class UserService {
   private profileApi = 'http://localhost:8090/api/user/me';
   private updateUrl = 'http://localhost:8090/api/user/update';
   
-  // This signal will be accessible by any component (Header, Profile, etc.)
   userSignal = signal<UserProfile | null>(null);
 
   constructor(private http: HttpClient) {}
@@ -29,7 +28,6 @@ export class UserService {
     return new HttpHeaders({ 'Authorization': `Bearer ${token}` });
   }
 
-  // Method to fetch user details and update the signal
   loadUserDetails() {
     return this.http.get<UserProfile>(this.profileApi, { headers: this.getHeaders() }).pipe(
       tap(userData => {
@@ -41,13 +39,11 @@ export class UserService {
     );
   }
 
-  // Method to update user and then immediately re-fetch fresh data
   updateUserProfile(payload: any) {
     return this.http.put(this.updateUrl, payload, { 
       headers: this.getHeaders(), 
       responseType: 'text' 
     }).pipe(
-      // switchMap ensures we only return the result of the fresh GET call
       switchMap(() => this.loadUserDetails())
     );
   }

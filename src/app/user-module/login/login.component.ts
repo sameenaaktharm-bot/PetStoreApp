@@ -40,20 +40,16 @@ export class LoginComponent implements OnInit {
 
     this.http.post<{token: string}>(apiUrl, loginPayload).subscribe({
       next: (response: {token: string}) => {
-        // 1. Save the credentials
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('token', response.token);
         localStorage.setItem('username', username);
 
-        // 2. Decode the token to see the role
         const decoded: any = jwtDecode(response.token);
         console.log('Decoded Token:', decoded);
 
-        // 3. Logic to identify the role (Check your console to see if it's 'role' or 'authorities')
         const roles = decoded.role || decoded.authorities || [];
         const isAdmin = roles.includes('ROLE_ADMIN');
 
-        // 4. Load details and navigate accordingly
         this.userService.loadUserDetails().subscribe({
           next: (userData) => {
             this.cartService.refreshCart();

@@ -16,7 +16,6 @@
       @else if (orders().length > 0) {
         @for (order of orders(); track order.orderId) {
           <div class="order-entry">
-            <!-- Order Header -->
             <div class="entry-header">
               <div class="order-id-block">
                 <span class="ref-label">Order Reference</span>
@@ -28,11 +27,9 @@
             </div>
 
             <div class="entry-content">
-              <!-- Enriched Gallery -->
               <div class="product-gallery">
                 @for (item of order.items; track item.orderItemId) {
                   <div class="product-thumb" [title]="item.name">
-                    <!-- Now item.imageUrl is available directly -->
                     <img [src]="imageBaseUrl + item.imageUrl" [alt]="item.name">
                     <span class="qty-badge">{{ item.quantity }}</span>
                   </div>
@@ -53,13 +50,12 @@
 
             <div class="entry-footer">
               <div class="footer-links">
-                <!-- Pass orderId to view this specific invoice -->
                 <a [routerLink]="['/cart/orderSummary']" [queryParams]="{orderId: order.orderId}" class="link-item">
                   <i class="fa-solid fa-file-invoice"></i> View Invoice
                 </a>
-                <a href="#" class="link-item">
+                <!-- <a href="#" class="link-item">
                   <i class="fa-solid fa-rotate-left"></i> Buy Again
-                </a>
+                </a> -->
               </div>
               <button class="btn-track">Track Package</button>
             </div>

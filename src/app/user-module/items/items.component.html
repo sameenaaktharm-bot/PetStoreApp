@@ -22,7 +22,6 @@
 
           <div class="item-actions">
             <div class="item-price">{{ item.price | currency:'INR' }}</div>
-            <!-- Added (click) event below -->
             <button 
             class="btn-add-cart" 
             (click)="onAddToCart(item.variantId)"

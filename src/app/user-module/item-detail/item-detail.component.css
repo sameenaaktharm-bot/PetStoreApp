@@ -14,7 +14,6 @@
   padding: 2rem 5%;
 }
 
-/* Breadcrumb / Back Navigation */
 .breadcrumb-nav {
   margin-bottom: 2rem;
   display: flex;
@@ -37,7 +36,6 @@
   border-color: var(--dark);
 }
 
-/* 2-Column Layout */
 .detail-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -48,7 +46,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.47);
 }
 
-/* Image Side */
 .image-box {
   background: var(--light);
   border-radius: 16px;
@@ -67,7 +64,6 @@
   mix-blend-mode: multiply; 
 }
 
-/* Info Side */
 .info-section {
   display: flex;
   flex-direction: column;
@@ -119,7 +115,6 @@
   color: var(--primary);
 }
 
-/* Purchase Actions */
 .purchase-actions {
   display: flex;
   gap: 1.5rem;
@@ -183,8 +178,6 @@
   box-shadow: 0 6px 20px rgba(30, 41, 59, 0.2);
 }
 
-
-/* Button disabled state */
 .btn-add-to-cart:disabled {
   background-color: #ccc !important;
   color: #666 !important;
@@ -192,13 +185,11 @@
   border: none;
 }
 
-/* Optional: Make the quantity selector look inactive */
 .quantity-selector button:disabled {
   color: #ccc;
   cursor: not-allowed;
 }
 
-/* Generic Description */
 .description-block h3 {
   font-size: 1.2rem;
   color: var(--dark);
@@ -211,7 +202,6 @@
   margin: 0;
 }
 
-/* Responsive Stacking */
 @media (max-width: 900px) {
   .detail-card {
     grid-template-columns: 1fr;

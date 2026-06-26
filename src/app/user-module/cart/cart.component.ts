@@ -13,7 +13,6 @@ import { CartService } from '../services/cart.service';
 export class CartComponent implements OnInit {
   private cartService = inject(CartService);
 
-  // Link directly to the shared service signals
   cartItems = this.cartService.cartItems;
   subtotal = this.cartService.subtotal;
 
@@ -29,13 +28,11 @@ export class CartComponent implements OnInit {
   updateQuantity(item: any, change: number): void {
     const newQuantity = item.quantity + change;
 
-    // Guard 1: If quantity drops to 0, remove the item
     if (newQuantity <= 0) {
       this.removeFromCart(item);
       return;
     }
 
-    // Guard 2: If increasing, check against stock quantity
     if (change > 0 && newQuantity > item.productVariant.stockQuantity) {
       return; 
     }
@@ -49,7 +46,6 @@ export class CartComponent implements OnInit {
   removeFromCart(item: any): void {
     this.cartService.deleteItem(this.userId, item.cartItemId).subscribe({
       next: () => {
-        // Optimistic update for immediate UI feel
         this.cartService.cartItems.update(items => 
           items.filter(i => i.cartItemId !== item.cartItemId)
         );

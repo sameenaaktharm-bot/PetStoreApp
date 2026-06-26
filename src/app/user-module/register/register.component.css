@@ -8,7 +8,6 @@
   display: block;
   min-height: 100vh;
   padding: 3rem 0;
-  /* Parent component manages the background image/color */
 }
 
 .auth-container {
@@ -38,7 +37,6 @@
   text-align: center;
 }
 
-/* --- Form Layout --- */
 .form-section {
   margin-bottom: 2.5rem;
 }
@@ -58,12 +56,11 @@
   margin-bottom: 1.2rem;
 }
 
-/* This creates the side-by-side layout for city/state, password/confirm, etc. */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  align-items: flex-end; /* Ensures inputs line up if one label is longer */
+  align-items: flex-end;
   margin-bottom: 1.2rem;
 }
 
@@ -75,7 +72,6 @@
   font-size: 0.9rem;
 }
 
-/* --- Input Styling --- */
 input, select {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -92,7 +88,6 @@ input:focus, select:focus {
   box-shadow: 0 0 0 1px var(--dark);
 }
 
-/* --- Button Styling --- */
 .btn-primary {
   display: block;
   margin: 3rem auto 0 auto;
@@ -119,7 +114,6 @@ input:focus, select:focus {
   cursor: not-allowed;
 }
 
-/* --- Footer Styling --- */
 .auth-footer {
   text-align: center;
   margin-top: 1.5rem;
@@ -137,7 +131,6 @@ input:focus, select:focus {
   text-decoration: underline;
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr; 
