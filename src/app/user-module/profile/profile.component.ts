@@ -118,12 +118,21 @@ export class ProfileComponent implements OnInit {
 
 
   onLogout(): void {
-  this.userService.clearUser();
+    this.userService.logoutBackend().subscribe({
+      next: () => {
+        this.performClientSideCleanup();
+      },
+      error: (err) => {
+        console.error('Backend logout failed or was unreachable:', err);
+        this.performClientSideCleanup();
+      }
+    });
+  }
 
-  this.cartService.cartItems.set([]);
-
-  localStorage.clear();
-
-  this.router.navigate(['/login']);
-}
+  private performClientSideCleanup(): void {
+    this.userService.clearUser();
+    this.cartService.cartItems.set([]);
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

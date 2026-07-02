@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface UserProfile {
   userId: string;
@@ -18,7 +19,8 @@ export interface UserProfile {
 export class UserService {
   private profileApi = 'http://localhost:8090/api/user/me';
   private updateUrl = 'http://localhost:8090/api/user/update';
-  
+  private logoutUrl = 'http://localhost:8090/api/logout';
+
   userSignal = signal<UserProfile | null>(null);
 
   constructor(private http: HttpClient) {}
@@ -46,6 +48,10 @@ export class UserService {
     }).pipe(
       switchMap(() => this.loadUserDetails())
     );
+  }
+
+  logoutBackend(): Observable<any> {
+    return this.http.post(this.logoutUrl, {}, { responseType: 'json' });
   }
 
   clearUser(){
